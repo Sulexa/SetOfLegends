@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Set Of Legends</title>
+		<meta name="description" content="Set Of Legends" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="GLF.png" />
+		
+		<script src="js/FileSaver.js"></script>
+		<script src="js/fillSession.js"></script>
+		<script src="js/lolapi.js"></script>
+		<script src="js/static.js"></script>
+		<script src="js/searchBar.js"></script>
+		<script src="js/itemSet.js"></script>
+
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+		
+    </head>
+	
+	<body>
+	
+	<header>
+		<a>Set Of Legends</a>
+		<button onclick="createItemSet()" >Create Item Set</button>
+		<select id="champsDropList">
+		</select>
+		<select id="serverChoice">
+			<option value = "na">NA</option>
+			<option value = "euw">EUW</option>
+			<option value = "eune">EUNE</option>
+			<option value = "lan">LAN</option>
+			<option value = "las">LAS</option>
+			<option value = "br">BR</option>
+			<option value = "tr">TR</option>
+			<option value = "ru">RU</option>
+			<option value = "kr">KR</option>
+			<option value = "oce">OCE</option>
+		</select>
+		<input placeholder = "Summoner Name" type = "text" id = "summonerSearchBar">
+		<button onclick="getIdByName(document.getElementById('summonerSearchBar').value,document.getElementById('serverChoice').value,document.getElementById('champsDropList').value)" >Submit</button>
+	</header>
+			
+		<div id = "itemBlock">
+			<div id = "popup">
+				<a></a>
+			</div>
+		
+			<p style = "margin-top:5px; margin-bottom:5px" >Search Item: <input onkeyup="search(this.value);"placeholder = "Ex: Rabadon" type = "text" id = "searchBar"></p>
+			
+			<div id="leftItemMenu">
+
+				<p class = "itemMenuTitle"><a>Starters: </a></p>
+
+				<p><a>Jungle<input type = "checkbox" ></a><a>voie<input type = "checkbox" ></a></p>
+						
+				<p class = "itemMenuTitle">Starters: </p>
+
+				<p>Search Item: <input type = "checkbox" ></p>
+				
+				<p class = "itemMenuTitle">Starters: </p>
+				
+				<p>Search Item: <input type = "checkbox" ></p>
+			
+			</div>
+			
+			<div id="middleItemMenu">
+
+				
+				<p class = "itemMenuTitle">Starters: </p>
+								
+				<p>Search Item: <input type = "checkbox" ></p>
+				
+				<p class = "itemMenuTitle">Starters: </p>
+
+				<p>Search Item: <input type = "checkbox" ></p>
+				
+			</div>
+			<div id="rightItemMenu">
+				
+				<p class = "itemMenuTitle">Starters: </p>
+
+				<p>Search Item: <input type = "checkbox" ></p>
+				
+				<p class = "itemMenuTitle">Starters: </p>
+
+				<p>Search Item: <input type = "checkbox" ></p>
+			</div>
+			
+			<div id="itemList">
+				
+			</div>
+
+		</div>
+		
+		<div id = "rightItemAccess" ondrop="drop(event);" ondragover="allowDrop(event);">
+		</div>
+		<img src = "data/bin.png" id = "bin" ondrop="dropDelete(event);" ondragover="allowDrop(event);"></img>
+		
+		<div id = "core" style = "margin-left:31%; display:block; width:60%">
+			<div id = "setParameters" style = "text-align:center;">
+				<p>
+					Title: 
+					<input id = "title" type="text" style = "margin-right:inherit;"></input>
+				</p>
+				<p>
+				Type:
+					<select id = "type">
+						<option value = "custom">custom</option>
+						<option value = "global">global</option>
+					</select>				
+				Map:
+					<select id = "map">
+						<option value = "any">any</option>
+						<option value = "SR">Summoner's Rift</option>
+						<option value = "HA">Howling Abyss</option>
+						<option value = "TT">Twisted Treeline</option>
+						<option value = "CS">Crystal Scar</option>
+					</select>				
+				Mode:
+					<select id = "mode">
+						<option value = "any">any</option>
+						<option value = "CLASSIC">CLASSIC</option>
+						<option value = "ARAM">ARAM</option>
+						<option value = "ODIN">ODIN</option>
+					</select>
+				Priority:
+					<input id = "priority" type="checkbox"></input>
+				Sortrank:
+					<input id = "sortrank" type="number" style = "width:30px;"></input>
+				</p>
+			</div>
+			<!--<div class = "block">
+				<div class = "blockHead" onclick = "deroulant(this)">
+					<a>Champions</a>
+					<img src = "data/boutonDeroulant.png"></img>
+				</div>
+				<div id="champsList" class = "blockCenter">
+				</div>
+			</div>-->
+			<div id="addBlock">
+				<img src = "data/plus.png" onclick="addBlock();"></img>
+			</div>
+			<div id = "summonerSpells">
+			
+			</div>
+		</div>
+	<footer>
+	
+	</footer>
+	
+	</body>
+
+<script>
+	//getIdByName("Pulse Sulexa", "euw", "33");
+		fillSessionItems(items, 12);
+		genereDropList(champs);
+</script>
+</html>
